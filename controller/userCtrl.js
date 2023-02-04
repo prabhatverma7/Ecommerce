@@ -63,7 +63,7 @@ const deleteaUser = asyncHandler(async (req, res) => {
 
 const updateaUser = asyncHandler(async (req, res) => {
     try {
-        const {id} = req.params;
+        const {id} = req.user;
         const deleteUser = await User.findByIdAndUpdate(id,{
             $set:{
                 firstname:req?.body?.firstname,
