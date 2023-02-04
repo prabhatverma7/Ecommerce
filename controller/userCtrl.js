@@ -71,7 +71,7 @@ const updateaUser = asyncHandler(async (req, res) => {
                 email:req?.body?.email,
                 mobile:req?.body?.mobile,
             }
-        },{ returnOriginal: false });
+        },{ new: true });
         res.json(deleteUser);
     } catch (ex) {
         throw new Error(ex)
