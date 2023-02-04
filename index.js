@@ -1,6 +1,7 @@
 const bodyParser = require('body-parser');
 const express = require('express');
 const dbConnect = require('./configs/dbConnect');
+const { notFound, errorHandler } = require('./middlewares/errorhandler');
 const dotenv = require('dotenv').config();
 const authRouter = require('./routes/authRoute');
 
@@ -10,6 +11,10 @@ dbConnect();
 
 app.use(bodyParser.json());
 app.use('/api/user',authRouter);
+
+
+app.use(notFound);
+app.use(errorHandler);
 app.listen(PORT, () => {
 console.log(`Server is running on ${PORT}`);
 });
